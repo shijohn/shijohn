@@ -2158,7 +2158,7 @@ body {
       background: #1098ad;
     }
     .brand {
-      background: #000000fe;
+      background: transparent;
     }
     .main-title, .brand {
       color: #ffffff !important;
