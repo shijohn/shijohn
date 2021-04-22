@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#1098ad">
-<title>伊索烟雨</title>
+<title>让Win10内置输入法更好用 | 伊索烟雨</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1619083136439">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,6 +38,8 @@
 
 
 
+  <meta name="description" content="让Win10内置输入法更好用" />
+  <meta name="keywords" content="windows" />
 </head>
 
 <body>
@@ -99,7 +101,7 @@
             
               
             
-            <li class="nav-item nav-item-active">
+            <li class="nav-item ">
               
               
                 <a href="/tags/" target="_self">
@@ -170,10 +172,26 @@
   <div class="main-continer">
     
     <div
-      class="section-layout  gemini">
+      class="section-layout gemini ">
       <div class="section-layout-wrapper">
-        <div id="sidebarMeta" class="sidebar">
-    
+        
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+        <div class="post-list-sidebar">
+          <div class="sidebar-title">
+            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active language" data-lan="index">文章目录</span>
+            <span id="metaSideBar" class="sidebar-title-item language" data-lan="preview">站点概览</span>
+          </div>
+        </div>
+      
+      <div class="sidebar-body gemini" id="sidebar_body">
+        
+          
+            <div class="post-side-meta" id="post_side_meta">
+              
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -237,128 +255,460 @@
 
 
 </div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#1%E8%AF%8D%E5%BA%93%E5%8A%9F%E8%83%BD"><strong>1.词库功能</strong></a>
+<ul>
+<li><a href="#11-%E8%87%AA%E5%AD%A6%E4%B9%A0%E8%AF%8D%E6%B1%87"><strong>1.1 自学习词汇</strong></a></li>
+<li><a href="#12-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9F%AD%E8%AF%AD"><strong>1.2 自定义短语</strong></a></li>
+<li><a href="#13-%E4%B8%93%E4%B8%9A%E8%AF%8D%E5%85%B8"><strong>1.3 专业词典</strong></a></li>
+<li><a href="#14-%E6%96%B0%E8%AF%8D%E7%83%AD%E8%AF%8D"><strong>1.4 新词热词</strong></a></li>
+</ul>
+</li>
+<li><a href="#2%E7%89%B9%E6%AE%8A%E8%BE%93%E5%85%A5%E6%96%B9%E6%B3%95"><strong>2.特殊输入方法</strong></a></li>
+<li><a href="#3-%E5%8F%8C%E6%8B%BC%E6%96%B9%E6%A1%88"><strong>3. 双拼方案</strong></a></li>
+<li><a href="#4emoji-%E9%A2%9C%E6%96%87%E5%AD%97%E4%B8%8E%E7%AC%A6%E5%8F%B7%E9%9D%A2%E6%9D%BF"><strong>4.emoji、颜文字与符号面板</strong></a></li>
+<li><a href="#%E5%B0%8F%E7%BB%93">小结</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
 </div>
+
 <script>
-  let sidebarMeta = document.querySelector('#sidebarMeta');
-  let scheme = 'gemini';
-  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
-  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
-    document.addEventListener('scroll', function(e) {
-      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
-        sidebarWrapper.classList.add('home-sidebar-fixed')
-      } else {
-        sidebarWrapper.classList.remove('home-sidebar-fixed')
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
       }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
     });
   }
-  </script>
-        <div class="section-box box-shadow-wrapper">
-          <section class="section tags-section bg-color posts-expand">
-            <div class="tags-box">
-  <div class="tag-cloud-title language" data-lan="cloud-tags" data-count="2">
-    目前共计 2 个标签
-  </div>
-  <div class="tag-cloud-list" id="tags">
-    
-      
-      
-        
-          
-            
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-      
-        
-          
-        
-      
-      <a class="cloud-tag" href="https://cikorsky.github.io/SUXqtEnfd/" rel="1">Java</a>
-    
-      
-      
-        
-          
-        
-      
-        
-          
-            
-      
-        
-          
-            
-      
-        
-      
-        
-          
-        
-      
-      <a class="cloud-tag" href="https://cikorsky.github.io/nKqslJFM_/" rel="2">windows</a>
-    
-  </div>
-</div>
-<script>
 
-  let fontStart = 12, fontEnd = 30, colorStart = '#666', colorEnd = '#000';
-  let tags = document.querySelector('#tags').children;
-  let counts = [];
-  for(let i = 0; i < tags.length; i++) {
-    counts.push(tags[i].rel);
-  }
-  let lowest = Math.min.apply(null,counts), highest = Math.max.apply(null,counts);;
-  let range = highest - lowest;
-  if (range === 0) {
-    range = 1;
-  }
-  let fontIncr, colorIncr;
-  fontIncr = (fontEnd - fontStart) / range;
-  
-  let sColorArr = toRGB(colorStart), eColorArr = toRGB(colorEnd);
-
-  for(let i = 0; i < tags.length; i++) {
-    let disCount = tags[i].rel - lowest;
-    let fontSize = fontStart + disCount * fontIncr;
-    let style = 'font-size: ' + fontSize + 'px;';
-    let arr = [];
-    for(let c = 0; c < sColorArr.length; c++) {
-      if (disCount === 0) {
-        disCount = 1;
-      }
-      let val = (sColorArr[c] - eColorArr[c]) / range * disCount;
-      if (val >= 100) {
-        val = eColorArr[c];
-      } else if (val <= 0) {
-        val = sColorArr[c];
-      }
-      arr[c] = Math.floor(val);
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
     }
-    style += 'color: ' + toHex(arr);
-    tags[i].style = style;
   }
 
-  function toRGB(code) {
-    if (code.length === 4) {
-      code = code.replace(/(\w)(\w)(\w)/gi, "\$1\$1\$2\$2\$3\$3");
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
     }
-    var hex = /(\w{2})(\w{2})(\w{2})/.exec(code);
-    return [parseInt(hex[1], 16), parseInt(hex[2], 16), parseInt(hex[3], 16)];
   }
 
-  function toHex(ary) {
-    return "#" + ((1 << 24) + (ary[0] << 16) + (ary[1] << 8) + ary[2]).toString(16).slice(1);
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
   }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
 
 </script>
-          </section>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+</div>
+<script>
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
+
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    window.Velocity(hideElement, 'stop');
+    window.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        window.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
+      }
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
+  }
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
+        <div class="section-box box-shadow-wrapper">
+          <div class="section bg-color post post-page">
+            <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://cikorsky.github.io/rang-win10-nei-zhi-shu-ru-fa-geng-hao-yong/">
+      让Win10内置输入法更好用
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2021-04-22 14:44:02">2021-04-22</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">分类于</span>
+      
+      
+      <a href="https://cikorsky.github.io/nKqslJFM_/">
+        <span>windows</span>
+      </a>
+      
+      
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>5<span class="language" data-lan="minute">分钟</span></span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>1316<span class="pc-show language" data-lan="words">字数</span></span>
+    </span>
+    
+  </div>
+</section>
+            <div class="post-body next-md-body" id="post_body">
+              <p>Windows 10 打磨至今，已愈加成熟。作为一名产品人员，十分欣赏其所采用的迭代策略、反馈流程、以及内置的原厂软件设计。</p>
+<p>输入法是系统操作中的超高频工具，顺手与否十分重要。Win 10 内置微软拼音，其实际使用体验已不输各类国产输入法，甚至在部分层面形成优势。</p>
+<ul>
+<li>系统内置，免安装</li>
+<li>隐私保护，无弹窗广告推送</li>
+<li>云输入加持，速度良好</li>
+</ul>
+<p>**但内置输入法的各类设置选项，恐怕很多人并没有仔细研究。**设置进入路径层级较多，需要三至四步操作，才可找到更具体的调整位置。</p>
+<ul>
+<li>路径：系统设置——语言——中文简体·选项——键盘——微软拼音选项</li>
+</ul>
+<p>请耐下心来，仔细调整一番，可以让我们的输入法更为好用。</p>
+<!--more-->
+<p>原文转载自少数派：<a href="https://sspai.com/post/52101">https://sspai.com/post/52101</a></p>
+<figure data-type="image" tabindex="1"><img src="https://cdn.sspai.com/2018/12/21/ddada055d23d459a3305bbaf49087ca0.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="img" loading="lazy"></figure>
+<h2 id="1词库功能"><strong>1.词库功能</strong></h2>
+<p>微软是支持词库导入/导出的，但词库文件后缀为.dat。字典词库文件，输入法厂商均有自己的编码后缀，很难通用化使用。</p>
+<pre><code>微软输入法，词库后缀为 .dat
+QQ 输入法，词库后缀为 .qpyd
+搜狗输入法，词库后缀为 .scel
+微软输入法，词库后缀为 .dat
+</code></pre>
+<p>看缩写就能明白，各家都把词库文件当作护城河。商业模式指导下的产品思路，倒也无可厚非。</p>
+<p><strong>但微软对「词库」的定义，其实分散在各个部分的，整合起来才能成为「完整的词库」。</strong></p>
+<ul>
+<li>自学习词汇</li>
+<li>自定义短语</li>
+<li>专业词典</li>
+<li>新词热词</li>
+</ul>
+<h3 id="11-自学习词汇"><strong>1.1 自学习词汇</strong></h3>
+<p>无法自行修改，只能在输入法学习过程中，由输入法自行控制。但其实这也是最好调教的地方：词汇准确输入一遍，第二次即可自动识别，属于各输入法的基础功能。</p>
+<p>但是，你可以把当前账户的自学习词库导出备用，格式就是上文提到的.dat</p>
+<figure data-type="image" tabindex="2"><img src="https://cdn.sspai.com/2018/12/21/c3b9388669c9558bd71bfec7fbbbc4d9.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="img" loading="lazy"></figure>
+<h3 id="12-自定义短语"><strong>1.2 自定义短语</strong></h3>
+<p>输入法内置了大多数常用的短语，但我们依然可以进行自定义导入，以满足自身行业的特殊词汇需求。</p>
+<ul>
+<li>路径：输入法设置——词库和自学习——添加或编辑自定义短语</li>
+</ul>
+<p>请自行添加需要的短语，设定并习惯后，能有效提升输入效率。</p>
+<figure data-type="image" tabindex="3"><img src="https://cdn.sspai.com/2018/12/21/68bcec13e8521996fdf3697e0cd19aa4.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="img" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://cdn.sspai.com/2018/12/21/916bb1c83867cd1154042ce2fec5d2fc.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="img" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://cdn.sspai.com/2018/12/21/3d6f8786e368e6438975b57790c398fa.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="img" loading="lazy"></figure>
+<h3 id="13-专业词典"><strong>1.3 专业词典</strong></h3>
+<p><strong>专业词典选项会被大部分人忽略——因为它看起来默认开启，但没有完全启用。</strong></p>
+<p>默认启用专业只包括：”计算机科学“、”电影“、”游戏”，其余“测绘学“、“建筑”、“林业“等内容默认关闭。</p>
+<ul>
+<li>路径：输入法设置——词库和自学习——选择启用哪些专业词典</li>
+</ul>
+<p>建议打开全部，这并不影响加载速度，但能改善部分生僻词汇输入环节的困扰。</p>
+<figure data-type="image" tabindex="6"><img src="https://cdn.sspai.com/2018/12/21/97acd4a10423ad0098dbc5cdcb80a726.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="img" loading="lazy"></figure>
+<h3 id="14-新词热词"><strong>1.4 新词热词</strong></h3>
+<p>开启后即可自动更新最新热词了，虽然效率没有搜狗高，但依旧能填补部分词语空白。</p>
+<ul>
+<li>路径：输入法设置——高级——新词热词</li>
+</ul>
+<figure data-type="image" tabindex="7"><img src="https://cdn.sspai.com/2018/12/21/28bed3aa623c75cd2cdea73bcd185ee1.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="img" loading="lazy"></figure>
+<h2 id="2特殊输入方法"><strong>2.特殊输入方法</strong></h2>
+<p>除此之外，微软输入法还提供了人名输入/U输入/V输入等功能。</p>
+<p><strong>「V模式」颇有意思，v键进入后，可快速输入中文年月日时间以及公式运算等。</strong></p>
+<p>例如，你输入“v123”，在按a选择，呈现的结果就是“一百二十三”</p>
+<p>v12:55，对应：十二时五十五分/ 12时55分 / 十二分五十五秒 等</p>
+<p>v1989.08.12，对应：1989年08月12/  一九八九年八月十二日 等</p>
+<figure data-type="image" tabindex="8"><img src="https://cdn.sspai.com/2018/12/21/38611dddf86f19bf7cbf5ba856952564.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="img" loading="lazy"></figure>
+<p>**「U模式」则方便用户输入一些特殊符号。**如win笔记本键盘上并不存在的「」，就可以在输入 uubd 后找到。</p>
+<p>虽然依旧较慢，必要时刻总比使用鼠标查找更便捷，对吧？</p>
+<figure data-type="image" tabindex="9"><img src="https://cdn.sspai.com/2018/12/21/f5466d93da5986c9b935ebb530856923.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="img" loading="lazy"></figure>
+<p><strong>另外一些简化输入小技巧，可以自行探索尝试。</strong></p>
+<ul>
+<li>输入sjx，可以得到三角形 △ ▲</li>
+<li>输入slh，可以得到省略号</li>
+<li>输入pzh，可以得到中文破折号</li>
+</ul>
+<h2 id="3-双拼方案"><strong>3. 双拼方案</strong></h2>
+<p>除了全拼方案，微软输入法也提供了双拼模式。</p>
+<p>内置方案较少，只有微软双拼、智能ABC、自然码三种。好在微软提供了自定义工具，可以在某类码表基础上，对零声母、音节、按键等进行自定义，生成自己的专属方案。</p>
+<figure data-type="image" tabindex="10"><img src="https://cdn.sspai.com/2018/12/21/8047e1659648d1da9544d9bbc80ce914.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="img" loading="lazy"></figure>
+<h2 id="4emoji-颜文字与符号面板"><strong>4.emoji、颜文字与符号面板</strong></h2>
+<p>微软内置了emoji方案、颜文字、符号面板，使用 <strong>Ctrl + Shift + B</strong> 即可唤出。</p>
+<p>emoji和颜文字对笔者并无用途，实在找不到使用场景。但符号面板的确实用，单位、序号、特殊、标点、数字、几何、字母，属于解决“平时用不到，想用找不到”痛点的好功能。</p>
+<figure data-type="image" tabindex="11"><img src="https://cdn.sspai.com/2018/12/21/963538482c61bab6ca6a106ee9f64209.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="img" loading="lazy"></figure>
+<figure data-type="image" tabindex="12"><img src="https://cdn.sspai.com/2018/12/21/57c8bf93dd0943c36520222bbb0af95e.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="img" loading="lazy"></figure>
+<figure data-type="image" tabindex="13"><img src="https://cdn.sspai.com/2018/12/21/74491596a60ec07037ddf0a41be048f6.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="img" loading="lazy"></figure>
+<h2 id="小结">小结</h2>
+<p>原生输入法，始终是很多人的心头好。无论是 iOS 还是 Android，原生输入方式都存在大量的拥趸。</p>
+<p>原生、稳定、简洁，如果能从「可用」进化到「好用」，就更完美了。希望微软对中文输入的打磨，更加精进吧。</p>
+
+            </div>
+            
+            
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      伊索の烟雨
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://cikorsky.github.io/rang-win10-nei-zhi-shu-ru-fa-geng-hao-yong/" title="让Win10内置输入法更好用">https://cikorsky.github.io/rang-win10-nei-zhi-shu-ru-fa-geng-hao-yong/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+      <a href="https://cikorsky.github.io/nKqslJFM_/"># windows</a>
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="钉钉直播回放下载教程" href="https://cikorsky.github.io/ding-ding-zhi-bo-hui-fang-xia-zai-jiao-cheng/">钉钉直播回放下载教程</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="钉钉直播回放下载教程" href="https://cikorsky.github.io/ding-ding-zhi-bo-hui-fang-xia-zai-jiao-cheng/">上一篇</a>
+      
+    </div>
+    <div class="nav-next">
+      
+    </div>
+  </div>
+</div>
+            
+            
+  
+
+          </div>
         </div>
       </div>
     </div>
@@ -565,6 +915,223 @@
     parent.insertBefore(aelem, next);
   })
 </script>
+    <div class="reward-mask" style="display: none;">
+  <div class="reward-relative">
+    <span class="close" aria-hidden="true">x</span>
+    <div class="reward-body">
+      <h2>感谢您的支持，我会继续努力的!</h2>
+      <div class="reward-img-box">
+        <div style="position: relative; width: 140px; height: 140px;">
+          
+          
+          
+        </div>
+      </div>
+      <p class="reward-word">扫码打赏，你说多少就多少</p>
+      <p class="reward-tip">打开微信扫一扫，即可进行扫码打赏哦</p>
+    </div>
+    <div class="bottom">
+      
+      
+    </div>
+  </div>
+</div>
+<style>
+  .reward-mask {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000054;
+  }
+
+  .reward-relative {
+    position: relative;
+    width: 480px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #fff;
+    top: 50%;
+    margin-top: -205px;
+  }
+
+  .reward-relative .close {
+    position: absolute;
+    right: 10px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #929292;
+  }
+
+  .reward-body {
+    padding: 40px 20px 20px;
+  }
+
+  .bottom {
+    display: flex;
+  }
+
+  .reward-btn {
+    text-align: center;
+  }
+
+  .reward-btn-text {
+    display: inline-block;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background-color: #ff9734;
+    color: #FFF;
+    margin-top: 20px;
+  }
+
+  .pay-text {
+    margin-top: 10px;
+    padding: 10px;
+    flex: 1;
+    transition: all .2s linear;
+  }
+
+  .pay-text:hover {
+    background-color: #a5a5a536;
+  }
+
+  .reward-body h2 {
+    padding-top: 10px;
+    text-align: center;
+    color: #a3a3a3;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 0 20px;
+  }
+
+  .reward-body h2:after,
+  .reward-body h2:before {
+    font-family: Arial, Helvetica, sans-serif;
+    background: 0 0;
+    width: 0;
+    height: 0;
+    font-style: normal;
+    color: #eee;
+    font-size: 80px;
+    position: absolute;
+    top: 20px;
+  }
+
+  .reward-body h2:before {
+    content: '\201c';
+    left: 50px;
+  }
+
+  .reward-body h2:after {
+    content: '\201d';
+    right: 80px;
+  }
+
+  .reward-img-box {
+    display: inline-block;
+    padding: 10px;
+    border: 6px solid #ea5f00;
+    margin: 0 auto;
+    border-radius: 3px;
+    position: relative;
+  }
+
+  .reward-img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .reward-relative {
+      height: 100%;
+      top: 0px;
+      margin-top: 0;
+      width: auto;
+    }
+
+    .reward-relative .bottom {
+      flex-direction: column;
+    }
+
+    .reward-relative .pay-text {
+      width: 80%;
+      margin: 5px auto;
+      border: 1px solid silver;
+      padding: 6px;
+      border-radius: 4px;
+    }
+
+    .reward-body h2:after {
+      right: 40px;
+    }
+
+    .reward-body h2:after,
+    .reward-body h2:before {
+      font-size: 60px;
+    }
+
+    .reward-body h2:before {
+      left: 20px;
+    }
+  }
+</style>
+<script>
+  !function () {
+    var mask = document.querySelector('.reward-mask');
+    let close = document.querySelector('.reward-relative .close');
+    let rewardBtn = document.querySelector('.reward-btn');
+
+    let zfb = document.querySelector('#zfb'),
+      wx = document.querySelector('#wx'),
+      zfbBtn = document.querySelector('#zfbBtn'),
+      wxBtn = document.querySelector('#wxBtn');
+
+    if (zfbBtn && wxBtn) {
+      zfbBtn.addEventListener('click', () => {
+        window.Velocity(zfb, 'transition.slideLeftIn', {
+          duration: 400
+        });
+        window.Velocity(wx, 'transition.slideRightOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+
+      wxBtn.addEventListener('click', () => {
+        window.Velocity(wx, 'transition.slideRightIn', {
+          duration: 400
+        });
+        window.Velocity(zfb, 'transition.slideLeftOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+    }
+
+    rewardBtn.addEventListener('click', (e) => {
+      window.Velocity(mask, 'transition.slideDownIn', {
+        duration: 400
+      })
+    });
+
+    close.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.Velocity(mask, 'transition.slideUpOut', {
+        duration: 400
+      })
+    })
+  }()
+</script>
+
   </div>
 </body>
 
@@ -1218,7 +1785,6 @@ QQ 输入法，词库后缀为 .qpyd
 
 
 <script src="/media/js/cool.js"></script>
-
 
 
 
