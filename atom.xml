@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://cikorsky.github.io</id>
     <title>伊索烟雨</title>
-    <updated>2021-04-22T07:26:54.824Z</updated>
+    <updated>2021-04-22T07:29:28.348Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://cikorsky.github.io"/>
     <link rel="self" href="https://cikorsky.github.io/atom.xml"/>
@@ -10,6 +10,229 @@
     <logo>https://cikorsky.github.io/images/avatar.png</logo>
     <icon>https://cikorsky.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 伊索烟雨</rights>
+    <entry>
+        <title type="html"><![CDATA[三层架构与MVC]]></title>
+        <id>https://cikorsky.github.io/post/san-ceng-jia-gou-yu-mvc/</id>
+        <link href="https://cikorsky.github.io/post/san-ceng-jia-gou-yu-mvc/">
+        </link>
+        <updated>2021-04-22T07:28:23.000Z</updated>
+        <summary type="html"><![CDATA[<p>所谓系统架构是指，整合应用系统程序大的结构。经常提到的系统结构有两种：三层架构与 MVC。这两种结构既有区别，又有联系。但这两种结构的使用，均是为了降低系统模块间的耦合度。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>所谓系统架构是指，整合应用系统程序大的结构。经常提到的系统结构有两种：三层架构与 MVC。这两种结构既有区别，又有联系。但这两种结构的使用，均是为了降低系统模块间的耦合度。</p>
+<!--more-->
+<h1 id="什么是三层架构">什么是三层架构</h1>
+<h2 id="本节视频">本节视频</h2>
+<ul>
+<li><a href="https://www.bilibili.com/video/av24480245/">【视频】三层架构+MVC-什么是三层架构</a></li>
+</ul>
+<h2 id="什么是系统架构">什么是系统架构</h2>
+<p>所谓系统架构是指，整合应用系统程序大的结构。经常提到的系统结构有两种：三层架构与 MVC。这两种结构既有区别，又有联系。但这两种结构的使用，均是为了降低系统模块间的耦合度。</p>
+<blockquote>
+<p>复杂度 = 耦合度</p>
+</blockquote>
+<h2 id="什么是三层架构-2">什么是三层架构</h2>
+<p>三层架构是指：视图层 View、服务层 Service，与持久层 （数据访问层）DAO。它们分别完成不同的功能。</p>
+<ul>
+<li>View 层：用于接收用户提交请求的代码。</li>
+<li>Service 层：系统的业务逻辑主要在这里完成。</li>
+<li>DAO 层：直接操作数据库的代码（Data Access Object）。</li>
+</ul>
+<p>为了更好的降低各层间的耦合度，在三层架构程序设计中，采用面向抽象编程。即上层对下层的调用，是通过接口实现的。而下层对上层的真正服务提供者，是下层接口的实现类。服务标准（接口）是相同的，服务提供者（实现类）可以更换。这就实现了层间解耦合。</p>
+<figure data-type="image" tabindex="1"><img src="http://pic.skylines.vip/SanCengJiaGou%2BMVC-01.png" alt="img" loading="lazy"></figure>
+<p>业务是核心，技术是辅助业务的。</p>
+<p>业务是有复杂度的，分三级：</p>
+<ul>
+<li>简单业务：只开启一个事务。</li>
+<li>普通业务：开启三个事务。</li>
+<li>复杂业务：开启七个事务。</li>
+</ul>
+<h1 id="什么是-mvc-模式">什么是 MVC 模式</h1>
+<h2 id="本节视频-2">本节视频</h2>
+<ul>
+<li><a href="https://www.bilibili.com/video/av24480269/">【视频】三层架构+MVC-什么是 MVC 模式</a></li>
+</ul>
+<h2 id="概述">概述</h2>
+<p>MVC，即 Model 模型、View 视图，及 Controller 控制器。</p>
+<ul>
+<li>
+<p>View：视图，为用户提供使用界面，与用户直接进行交互。</p>
+</li>
+<li>
+<p>Model：模型，承载数据，并对用户提交请求进行计算的模块。其分为两类，一类称为数据承载 Bean，一类称为业务处理 Bean。所谓数据承载 Bean 是指实体类，专门用户承载业务数据的，如 Student、User 等。而业务处理 Bean 则是指 Service 或 Dao 对象， 专门用于处理用户提交请求的。</p>
+<p><strong>数据模型</strong> -&gt; Entity</p>
+<p><strong>业务模型</strong> -&gt; Service</p>
+<p>Controller：控制器，用于将用户请求转发给相应的 Model 进行处理，并根据 Model 的计算结果向用户提供相应响应。</p>
+</li>
+</ul>
+<h2 id="mvc-架构程序的工作流程">MVC 架构程序的工作流程</h2>
+<ul>
+<li>用户通过 View 页面向服务端提出请求，可以是表单请求、超链接请求、AJAX 请求等。</li>
+<li>服务端 Controller 控制器接收到请求后对请求进行解析，找到相应的 Model 对用户请求进行处理</li>
+<li>Model 处理后，将处理结果再交给 Controller</li>
+<li>Controller 在接到处理结果后，根据处理结果找到要作为向客户端发回的响应 View 页面。页面经渲染（数据填充）后，再发送给客户端。</li>
+</ul>
+<figure data-type="image" tabindex="2"><img src="http://pic.skylines.vip/SanCengJiaGou%2BMVC-02.png" alt="img" loading="lazy"></figure>
+<h2 id="三层架构-mvc-示意图">三层架构 + MVC 示意图</h2>
+<figure data-type="image" tabindex="3"><img src="http://pic.skylines.vip/SanCengJiaGou%2BMVC-03.png" alt="img" loading="lazy"></figure>
+<h1 id="小知识-高内聚低耦合">小知识-高内聚，低耦合</h1>
+<h2 id="本节视频-3">本节视频</h2>
+<ul>
+<li><a href="https://www.bilibili.com/video/av24480283/">【视频】小知识-高内聚，低耦合</a></li>
+</ul>
+<p>一种类只做一种事；</p>
+<p>一个方法只做一件事；</p>
+<p>写且只写一次。</p>
+<h1 id="课后练习-三层架构">课后练习-三层架构</h1>
+<h2 id="本节视频-4">本节视频</h2>
+<ul>
+<li>
+<p><a href="https://www.bilibili.com/video/av24480296/">【视频】课后练习-三层架构-1</a></p>
+<p>MAVEN项目只要有POM就可以创建。</p>
+<p>TDD 测试驱动编程</p>
+<p>Q: IDEA的MAVEN工具栏不显示？</p>
+<p>A: 1. 首先view &gt;Tool Windows &gt; Maven，如果没有Maven项说明MAVEN环境没配置好；</p>
+<figure data-type="image" tabindex="4"><img src="http://pic.skylines.vip/SanCengJiaGou%2BMVC-04.png" alt="1570881340310" loading="lazy"></figure>
+<ol>
+<li>打开File&gt;Settings（快捷键Ctrl+Shift+S）&gt;Build,Execution,Deployment&gt;Build Tools&gt;Maven，显式maven的环境，看是否为正确的配置。</li>
+<li>1和2调整后均需重启IDEA。</li>
+</ol>
+<figure data-type="image" tabindex="5"><img src="http://pic.skylines.vip/SanCengJiaGou%2BMVC-05.png" alt="1570881488643" loading="lazy"></figure>
+</li>
+<li>
+<p><a href="https://www.bilibili.com/video/av24480336/">【视频】课后练习-三层架构-2</a></p>
+</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[钉钉直播回放下载教程]]></title>
+        <id>https://cikorsky.github.io/post/ding-ding-zhi-bo-hui-fang-xia-zai-jiao-cheng/</id>
+        <link href="https://cikorsky.github.io/post/ding-ding-zhi-bo-hui-fang-xia-zai-jiao-cheng/">
+        </link>
+        <updated>2021-04-22T07:27:06.000Z</updated>
+        <summary type="html"><![CDATA[<p>Author：John SHI，Update：2020年4月13日</p>
+<p>本教程不仅适用于钉钉直播回放的下载，同样适用于其他基于M3U8文件的<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fzh.wikipedia.org%2Fwiki%2FHTTP_Live_Streaming">HTTP Live Streaming（缩写为 HLS）</a> 协议视频。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Author：John SHI，Update：2020年4月13日</p>
+<p>本教程不仅适用于钉钉直播回放的下载，同样适用于其他基于M3U8文件的<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fzh.wikipedia.org%2Fwiki%2FHTTP_Live_Streaming">HTTP Live Streaming（缩写为 HLS）</a> 协议视频。</p>
+<!--more-->
+<hr>
+<h2 id="1-前置条件">1. 前置条件</h2>
+<h3 id="11-所需工具">1.1 所需工具</h3>
+<ul>
+<li>N_m3u8DL-CLI
+<ul>
+<li>N_m3u8DL-CLI是一款用于下载m3u8的命令行工具，基于.NET Framework 4.6框架开发，调用系统类库进行HTTP下载，支持常见的m3u8格式下载，支持从视频中选择一部分下载，还提供丰富的命令行选项以增强其功能。</li>
+<li>使用说明：https://nilaoda.github.io/N_m3u8DL-CLI/</li>
+<li>下载地址：https://github.com/nilaoda/N_m3u8DL-CLI_Core</li>
+</ul>
+</li>
+<li>HttpAnalyzer
+<ul>
+<li>HTTP Analyzer是一个嗅探器或查看器，允许实时监视和检查HTTP / HTTPS流量。它可以跟踪和显示各种信息，包括标题，内容，Cookie，查询字符串，发布数据，请求和响应流，重定向URL等。它有一个请求构建器，使您可以手动编写HTTP / HTTPS请求。它还提供缓存信息和会话清除，以及HTTP状态代码信息和多个筛选选项。一个有用的开发工具，用于性能分析，调试和诊断。可以捕获来自某些特定进程或用户/会话/系统范围应用程序的HTTP / HTTPS流量。它能够在Windows应用程序中捕获HTTP信息，而无需从HTTP Analyzer中启动它们。如果应用程序使用Microsoft WININET API（例如，outlook），Mozilla NSS API，则HTTPS可用。 （例如firefox，thunderbird）或OpenSSL。</li>
+<li>下载地址：http://www.pc6.com/softview/SoftView_446176.html</li>
+</ul>
+</li>
+<li>钉钉
+<ul>
+<li>不解释。</li>
+</ul>
+</li>
+</ul>
+<h3 id="12-m3u8简介">1.2 M3U8简介</h3>
+<p>m3u8 文件实质是一个播放列表（playlist），其可能是一个媒体播放列表（Media Playlist），或者是一个主列表（Master Playlist）。但无论是哪种播放列表，其内部文字使用的都是 utf-8 编码。</p>
+<p>当 m3u8 文件作为媒体播放列表（Meida Playlist）时，其内部信息记录的是一系列媒体片段资源，顺序播放该片段资源，即可完整展示多媒体资源。其格式如下所示：</p>
+<pre><code class="language-txt">#EXTM3U
+#EXT-X-TARGETDURATION:10
+
+#EXTINF:9.009,
+http://media.example.com/first.ts
+#EXTINF:9.009,
+http://media.example.com/second.ts
+#EXTINF:3.003,
+http://media.example.com/third.ts
+</code></pre>
+<p>对于点播来说，客户端只需按顺序下载上述片段资源，依次进行播放即可。而对于直播来说，客户端需要 <strong>定时重新请求</strong> 该 m3u8 文件，看下是否有新的片段数据需要进行下载并播放。</p>
+<h3 id="13-hls简介">1.3 HLS简介</h3>
+<p>HLS 是一个由苹果公司提出的基于 HTTP 的流媒体网络传输协议。</p>
+<p>HLS 的工作原理是把整个流分成一个个小的基于 HTTP 的文件来下载，每次只下载一些。当媒体流正在播放时，客户端可以选择从许多不同的备用源中以不同的速率下载同样的资源，允许流媒体会话适应不同的数据速率。在开始一个流媒体会话时，客户端会下载一个包含元数据的 extended M3U (m3u8) playlist文件，用于寻找可用的媒体流。<br>
+HLS 只请求基本的 HTTP 报文，与实时传输协议（RTP）不同，HLS 可以穿过任何允许 HTTP 数据通过的防火墙或者代理服务器。它也很容易使用内容分发网络来传输媒体流。</p>
+<p>简而言之，HLS 是新一代流媒体传输协议，其基本实现原理为将一个大的媒体文件进行分片，将该分片文件资源路径记录于 m3u8 文件（即 playlist）内，其中附带一些额外描述（比如该资源的多带宽信息···）用于提供给客户端。客户端依据该 m3u8 文件即可获取对应的媒体资源，进行播放。</p>
+<p>因此，客户端获取 HLS 流文件，主要就是对 m3u8 文件进行解析操作。</p>
+<h2 id="2-下载步骤">2 下载步骤</h2>
+<h3 id="21-钉钉准备">2.1 钉钉准备</h3>
+<figure data-type="image" tabindex="1"><img src="D:%5Chexo%5Csource_posts%5C%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE%E4%B8%8B%E8%BD%BD%E6%95%99%E7%A8%8B.assets%5C%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE-1.png" alt="钉钉直播回放-1.png" loading="lazy"></figure>
+<ul>
+<li>打开并登录钉钉。</li>
+<li>①找到需要下载直播回放的群。</li>
+<li>②打开直播回放列表。<br>
+注意：此时先不要打开需要下载的直播回放，即<code>先不要进行③操作</code>。</li>
+</ul>
+<h3 id="22-http-analyzer准备">2.2 Http Analyzer准备</h3>
+<figure data-type="image" tabindex="2"><img src="http://pic.skylines.vip/%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE-2.png" alt="钉钉直播回放-2.png" loading="lazy"></figure>
+<ul>
+<li>打开Http Analyzer。</li>
+<li>①点击<code>开始</code>右边的下拉箭头。</li>
+<li>②在弹出的下拉列表中，点击<code>选中运行中的进程…</code>。</li>
+<li>③在弹出的<code>附加到进程</code>对话框中，勾选所有的<code>dingtalk.exe*32</code>进程。</li>
+<li>④点击<code>确定</code>。</li>
+</ul>
+<h3 id="22-正式下载">2.2  正式下载</h3>
+<figure data-type="image" tabindex="3"><img src="http://pic.skylines.vip/%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE-3.png" alt="钉钉直播回放-3.png" loading="lazy"></figure>
+<ul>
+<li>
+<p>正式开始下载前，点击Http Analyzer工具栏中的<code>清空</code>，将历史捕获清空。</p>
+</li>
+<li>
+<p>然后，在钉钉中打开需要下载的直播回放，即<code>2.1节的③操作</code>。</p>
+</li>
+<li>
+<p>钉钉直播回放开始后，Http Analyzer捕获到钉钉的请求记录。</p>
+</li>
+</ul>
+<figure data-type="image" tabindex="4"><img src="http://pic.skylines.vip/%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE-4.png" alt="钉钉直播回放-4.png" loading="lazy"></figure>
+<ul>
+<li>
+<p>在Http Analyzer捕获到的记录中找到URL中包含<code>m3u8?</code>的记录。</p>
+<p>注意：可通过图中的<code>类型</code>（application)和<code>域名</code>(alicdn.com)辅助定位。</p>
+</li>
+<li>
+<p>在包含<code>m3u8?</code>的记录上右键，复制URL。</p>
+<ul>
+<li>复制的URL示例：</li>
+</ul>
+<p>http://dtliving-pre.alicdn.com/live_hp/1e1574d7-aa6a-405f-9de9-27973657c37f.m3u8?auth_key=1588947662-0-0-7799e42fb426a8bcc600766bf410389a&amp;cid=a1ab8ce69a081fcc35467b3c1659dd1f&amp;token2=0a199b8c83dc656dd8c9f6032aea9cccxdsIzWKsB0q3_pj7lwGPeg8C-n7Rn2DuBPbcogyXe8vD0cM33v8LqoS1uL56zvanTTmF7icNDQPnbUek3mQ5d-QUBAdfZXBQ2GQU09WsQlc=&amp;token=3a4174773a4fb6eda0904d9f232557abEnLchfYuGYysKSEAOt9xPqpWOxPYFHOAIeUtIELW27B6wYt5grM12cwhz-IEBwb9U99SQ_PeiGA-z7oqExT1q11ST73mDIZg6HS9CgKgkAE=&amp;app_type=Android&amp;version=5.0.9&amp;viewer_id=699672870&amp;uid=I9sdiOz9GT5RqsK7zI3R8w==</p>
+</li>
+</ul>
+<figure data-type="image" tabindex="5"><img src="http://pic.skylines.vip/%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE-5.png" alt="钉钉直播回放-5.png" loading="lazy"></figure>
+<ul>
+<li>
+<p>打开N_m3u8DL-CLI-SimpleG.exe文件。</p>
+</li>
+<li>
+<p>在N_m3u8DL-CLI-SimpleG主界面中进行设置①<code>工作目录</code>（即下载文件保存目录），④勾选<code>合并后删除分片</code>。</p>
+</li>
+<li>
+<p>在N_m3u8DL-CLI-SimpleG主界面中：</p>
+<ul>
+<li>②将复制的包含<code>m3u8?</code>记录的URL，粘贴至<code>M3U8地址</code>中。</li>
+<li>③填写<code>视频标题</code>。</li>
+</ul>
+</li>
+<li>
+<p>⑤点击<code>GO(S)</code>，弹出下载窗口开始下载。</p>
+</li>
+<li>
+<p>可在下载窗口中查看下载进度，下载完成后，下载窗口自动关闭。</p>
+</li>
+</ul>
+<figure data-type="image" tabindex="6"><img src="http://pic.skylines.vip/%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE-6.png" alt="钉钉直播回放-6.png" loading="lazy"></figure>
+<h3 id="23-下载完成">2.3 下载完成</h3>
+<ul>
+<li>在<code>工作目录</code>中找到下载的直播回放视频即可播放。</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[让Win10内置输入法更好用]]></title>
         <id>https://cikorsky.github.io/post/rang-win10-nei-zhi-shu-ru-fa-geng-hao-yong/</id>
