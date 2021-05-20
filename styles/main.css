@@ -2085,21 +2085,21 @@ body {
       color: #555;
       border-bottom: 1px solid #555;
     }a:hover {
-      color: #66d9e8;
+      color: #f1f3f5;
     }
     
     .archive-timeline-box .tag-node:hover::before {
-      background-color: #66d9e8;
+      background-color: #f1f3f5;
     }
     
     .markdownIt-TOC a:hover {
-      color: #66d9e8;
-      border-bottom-color: #66d9e8;
+      color: #f1f3f5;
+      border-bottom-color: #f1f3f5;
     }
 
     .next-md-body a:hover, .friends-box a:hover {
-      color: #66d9e8;
-      border-bottom-color: #66d9e8;
+      color: #f1f3f5;
+      border-bottom-color: #f1f3f5;
     }
     .nav-toggle .line {
       background-color:  !important;
@@ -2109,11 +2109,11 @@ body {
       }.nav-item a:hover {
         color: #1098ad;
       }.nav-item-active {
-      background: #e3fafcfe;
+      background: #f1f3f5fe;
     }
 
     .nav-item:hover {
-      background: #e3fafcfe;
+      background: #f1f3f5fe;
       color: rgba(0, 0, 0, 0.98);
     }.site-author-image {
       border-radius: 50%;
@@ -2152,13 +2152,13 @@ body {
       background-color: #fffffffe;
     }
     .site-meta {
-      background: #1098ad !important;
+      background: #212529 !important;
     }
     .head-top-line {
-      background: #1098ad;
+      background: #212529;
     }
     .brand {
-      background: transparent;
+      background: #212529fe;
     }
     .main-title, .brand {
       color: #ffffff !important;
