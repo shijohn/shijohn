@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shijohn.github.io</id>
     <title>伊索烟雨</title>
-    <updated>2021-05-21T01:54:15.180Z</updated>
+    <updated>2021-05-21T02:02:03.716Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shijohn.github.io"/>
     <link rel="self" href="https://shijohn.github.io/atom.xml"/>
@@ -21,10 +21,6 @@
         <content type="html"><![CDATA[<p>所谓系统架构是指，整合应用系统程序大的结构。经常提到的系统结构有两种：三层架构与 MVC。这两种结构既有区别，又有联系。但这两种结构的使用，均是为了降低系统模块间的耦合度。</p>
 <!--more-->
 <h1 id="什么是三层架构">什么是三层架构</h1>
-<h2 id="本节视频">本节视频</h2>
-<ul>
-<li><a href="https://www.bilibili.com/video/av24480245/">【视频】三层架构+MVC-什么是三层架构</a></li>
-</ul>
 <h2 id="什么是系统架构">什么是系统架构</h2>
 <p>所谓系统架构是指，整合应用系统程序大的结构。经常提到的系统结构有两种：三层架构与 MVC。这两种结构既有区别，又有联系。但这两种结构的使用，均是为了降低系统模块间的耦合度。</p>
 <blockquote>
@@ -38,7 +34,7 @@
 <li>DAO 层：直接操作数据库的代码（Data Access Object）。</li>
 </ul>
 <p>为了更好的降低各层间的耦合度，在三层架构程序设计中，采用面向抽象编程。即上层对下层的调用，是通过接口实现的。而下层对上层的真正服务提供者，是下层接口的实现类。服务标准（接口）是相同的，服务提供者（实现类）可以更换。这就实现了层间解耦合。</p>
-<figure data-type="image" tabindex="1"><img src="http://pic.skylines.vip/SanCengJiaGou%2BMVC-01.png" alt="img" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="E:%5C%E5%B7%A5%E4%BD%9C%E6%96%87%E6%A1%A3%5CNotes%5CJava%E7%AC%94%E8%AE%B0%5C%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC.assets%5C%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC-1.png" alt="三层架构与MVC-1" loading="lazy"></figure>
 <p>业务是核心，技术是辅助业务的。</p>
 <p>业务是有复杂度的，分三级：</p>
 <ul>
@@ -47,10 +43,6 @@
 <li>复杂业务：开启七个事务。</li>
 </ul>
 <h1 id="什么是-mvc-模式">什么是 MVC 模式</h1>
-<h2 id="本节视频-2">本节视频</h2>
-<ul>
-<li><a href="https://www.bilibili.com/video/av24480269/">【视频】三层架构+MVC-什么是 MVC 模式</a></li>
-</ul>
 <h2 id="概述">概述</h2>
 <p>MVC，即 Model 模型、View 视图，及 Controller 控制器。</p>
 <ul>
@@ -71,37 +63,24 @@
 <li>Model 处理后，将处理结果再交给 Controller</li>
 <li>Controller 在接到处理结果后，根据处理结果找到要作为向客户端发回的响应 View 页面。页面经渲染（数据填充）后，再发送给客户端。</li>
 </ul>
-<figure data-type="image" tabindex="2"><img src="http://pic.skylines.vip/SanCengJiaGou%2BMVC-02.png" alt="img" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="E:%5C%E5%B7%A5%E4%BD%9C%E6%96%87%E6%A1%A3%5CNotes%5CJava%E7%AC%94%E8%AE%B0%5C%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC.assets%5C%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC-2.png" alt="三层架构与MVC-2" loading="lazy"></figure>
 <h2 id="三层架构-mvc-示意图">三层架构 + MVC 示意图</h2>
-<figure data-type="image" tabindex="3"><img src="http://pic.skylines.vip/SanCengJiaGou%2BMVC-03.png" alt="img" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="E:%5C%E5%B7%A5%E4%BD%9C%E6%96%87%E6%A1%A3%5CNotes%5CJava%E7%AC%94%E8%AE%B0%5C%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC.assets%5C%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC-3.png" alt="三层架构与MVC-3" loading="lazy"></figure>
 <h1 id="小知识-高内聚低耦合">小知识-高内聚，低耦合</h1>
-<h2 id="本节视频-3">本节视频</h2>
-<ul>
-<li><a href="https://www.bilibili.com/video/av24480283/">【视频】小知识-高内聚，低耦合</a></li>
-</ul>
 <p>一种类只做一种事；</p>
 <p>一个方法只做一件事；</p>
 <p>写且只写一次。</p>
-<h1 id="课后练习-三层架构">课后练习-三层架构</h1>
-<h2 id="本节视频-4">本节视频</h2>
-<ul>
-<li>
-<p><a href="https://www.bilibili.com/video/av24480296/">【视频】课后练习-三层架构-1</a></p>
+<h1 id="三层架构">三层架构</h1>
 <p>MAVEN项目只要有POM就可以创建。</p>
 <p>TDD 测试驱动编程</p>
 <p>Q: IDEA的MAVEN工具栏不显示？</p>
 <p>A: 1. 首先view &gt;Tool Windows &gt; Maven，如果没有Maven项说明MAVEN环境没配置好；</p>
-<figure data-type="image" tabindex="4"><img src="http://pic.skylines.vip/SanCengJiaGou%2BMVC-04.png" alt="1570881340310" loading="lazy"></figure>
-<ol>
+<figure data-type="image" tabindex="4"><img src="E:%5C%E5%B7%A5%E4%BD%9C%E6%96%87%E6%A1%A3%5CNotes%5CJava%E7%AC%94%E8%AE%B0%5C%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC.assets%5C%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC-4.png" alt="1570881340310" loading="lazy"></figure>
+<ol start="2">
 <li>打开File&gt;Settings（快捷键Ctrl+Shift+S）&gt;Build,Execution,Deployment&gt;Build Tools&gt;Maven，显式maven的环境，看是否为正确的配置。</li>
 <li>1和2调整后均需重启IDEA。</li>
 </ol>
-<figure data-type="image" tabindex="5"><img src="http://pic.skylines.vip/SanCengJiaGou%2BMVC-05.png" alt="1570881488643" loading="lazy"></figure>
-</li>
-<li>
-<p><a href="https://www.bilibili.com/video/av24480336/">【视频】课后练习-三层架构-2</a></p>
-</li>
-</ul>
+<figure data-type="image" tabindex="5"><img src="E:%5C%E5%B7%A5%E4%BD%9C%E6%96%87%E6%A1%A3%5CNotes%5CJava%E7%AC%94%E8%AE%B0%5C%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC.assets%5C%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC-5.png" alt="三层架构与MVC-5" loading="lazy"></figure>
 ]]></content>
     </entry>
     <entry>
