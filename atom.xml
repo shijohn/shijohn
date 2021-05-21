@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shijohn.github.io</id>
     <title>伊索烟雨</title>
-    <updated>2021-05-21T01:51:19.177Z</updated>
+    <updated>2021-05-21T01:54:15.180Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shijohn.github.io"/>
     <link rel="self" href="https://shijohn.github.io/atom.xml"/>
@@ -169,7 +169,7 @@ HLS 只请求基本的 HTTP 报文，与实时传输协议（RTP）不同，HLS 
 注意：此时先不要打开需要下载的直播回放，即<code>先不要进行③操作</code>。</li>
 </ul>
 <h3 id="22-http-analyzer准备">2.2 Http Analyzer准备</h3>
-<figure data-type="image" tabindex="2"><img src="E:%5C%E5%B7%A5%E4%BD%9C%E6%96%87%E6%A1%A3%5CNotes%5C%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE%E4%B8%8B%E8%BD%BD%E6%95%99%E7%A8%8BV1.0.assets%5C%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE-2.png" alt="钉钉直播回放-2.png" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://gitee.com/cikorsky/blog-shijohn/raw/master/img/%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE%E4%B8%8B%E8%BD%BD/%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE-2.png" alt="钉钉直播回放-2.png" loading="lazy"></figure>
 <ul>
 <li>打开Http Analyzer。</li>
 <li>①点击<code>开始</code>右边的下拉箭头。</li>
@@ -178,7 +178,7 @@ HLS 只请求基本的 HTTP 报文，与实时传输协议（RTP）不同，HLS 
 <li>④点击<code>确定</code>。</li>
 </ul>
 <h3 id="22-正式下载">2.2  正式下载</h3>
-<figure data-type="image" tabindex="3"><img src="E:%5C%E5%B7%A5%E4%BD%9C%E6%96%87%E6%A1%A3%5CNotes%5C%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE%E4%B8%8B%E8%BD%BD%E6%95%99%E7%A8%8BV1.0.assets%5C%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE-3.png" alt="钉钉直播回放-3.png" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://gitee.com/cikorsky/blog-shijohn/raw/master/img/%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE%E4%B8%8B%E8%BD%BD/%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE-3.png" alt="钉钉直播回放-3.png" loading="lazy"></figure>
 <ul>
 <li>
 <p>正式开始下载前，点击Http Analyzer工具栏中的<code>清空</code>，将历史捕获清空。</p>
@@ -190,7 +190,7 @@ HLS 只请求基本的 HTTP 报文，与实时传输协议（RTP）不同，HLS 
 <p>钉钉直播回放开始后，Http Analyzer捕获到钉钉的请求记录。</p>
 </li>
 </ul>
-<figure data-type="image" tabindex="4"><img src="E:%5C%E5%B7%A5%E4%BD%9C%E6%96%87%E6%A1%A3%5CNotes%5C%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE%E4%B8%8B%E8%BD%BD%E6%95%99%E7%A8%8BV1.0.assets%5C%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE-4.png" alt="钉钉直播回放-4.png" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://gitee.com/cikorsky/blog-shijohn/raw/master/img/%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE%E4%B8%8B%E8%BD%BD/%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE-4.png" alt="钉钉直播回放-4.png" loading="lazy"></figure>
 <ul>
 <li>
 <p>在Http Analyzer捕获到的记录中找到URL中包含<code>m3u8?</code>的记录。</p>
@@ -204,7 +204,7 @@ HLS 只请求基本的 HTTP 报文，与实时传输协议（RTP）不同，HLS 
 <p>http://dtliving-pre.alicdn.com/live_hp/1e1574d7-aa6a-405f-9de9-27973657c37f.m3u8?auth_key=1588947662-0-0-7799e42fb426a8bcc600766bf410389a&amp;cid=a1ab8ce69a081fcc35467b3c1659dd1f&amp;token2=0a199b8c83dc656dd8c9f6032aea9cccxdsIzWKsB0q3_pj7lwGPeg8C-n7Rn2DuBPbcogyXe8vD0cM33v8LqoS1uL56zvanTTmF7icNDQPnbUek3mQ5d-QUBAdfZXBQ2GQU09WsQlc=&amp;token=3a4174773a4fb6eda0904d9f232557abEnLchfYuGYysKSEAOt9xPqpWOxPYFHOAIeUtIELW27B6wYt5grM12cwhz-IEBwb9U99SQ_PeiGA-z7oqExT1q11ST73mDIZg6HS9CgKgkAE=&amp;app_type=Android&amp;version=5.0.9&amp;viewer_id=699672870&amp;uid=I9sdiOz9GT5RqsK7zI3R8w==</p>
 </li>
 </ul>
-<figure data-type="image" tabindex="5"><img src="E:%5C%E5%B7%A5%E4%BD%9C%E6%96%87%E6%A1%A3%5CNotes%5C%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE%E4%B8%8B%E8%BD%BD%E6%95%99%E7%A8%8BV1.0.assets%5C%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE-5.png" alt="钉钉直播回放-5.png" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://gitee.com/cikorsky/blog-shijohn/raw/master/img/%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE%E4%B8%8B%E8%BD%BD/%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE-5.png" alt="钉钉直播回放-5.png" loading="lazy"></figure>
 <ul>
 <li>
 <p>打开N_m3u8DL-CLI-SimpleG.exe文件。</p>
@@ -226,7 +226,7 @@ HLS 只请求基本的 HTTP 报文，与实时传输协议（RTP）不同，HLS 
 <p>可在下载窗口中查看下载进度，下载完成后，下载窗口自动关闭。</p>
 </li>
 </ul>
-<figure data-type="image" tabindex="6"><img src="E:%5C%E5%B7%A5%E4%BD%9C%E6%96%87%E6%A1%A3%5CNotes%5C%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE%E4%B8%8B%E8%BD%BD%E6%95%99%E7%A8%8BV1.0.assets%5C%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE-6.png" alt="钉钉直播回放-6.png" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://gitee.com/cikorsky/blog-shijohn/raw/master/img/%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE%E4%B8%8B%E8%BD%BD/%E9%92%89%E9%92%89%E7%9B%B4%E6%92%AD%E5%9B%9E%E6%94%BE-6.png" alt="钉钉直播回放-6.png" loading="lazy"></figure>
 <h3 id="23-下载完成">2.3 下载完成</h3>
 <ul>
 <li>在<code>工作目录</code>中找到下载的直播回放视频即可播放。</li>
