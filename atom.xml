@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shijohn.github.io</id>
     <title>伊索烟雨</title>
-    <updated>2021-05-21T02:07:19.792Z</updated>
+    <updated>2021-05-21T02:12:17.710Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shijohn.github.io"/>
     <link rel="self" href="https://shijohn.github.io/atom.xml"/>
@@ -34,7 +34,7 @@
 <li>DAO 层：直接操作数据库的代码（Data Access Object）。</li>
 </ul>
 <p>为了更好的降低各层间的耦合度，在三层架构程序设计中，采用面向抽象编程。即上层对下层的调用，是通过接口实现的。而下层对上层的真正服务提供者，是下层接口的实现类。服务标准（接口）是相同的，服务提供者（实现类）可以更换。这就实现了层间解耦合。</p>
-<figure data-type="image" tabindex="1"><img src="E:%5C%E5%B7%A5%E4%BD%9C%E6%96%87%E6%A1%A3%5CNotes%5CJava%E7%AC%94%E8%AE%B0%5C%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC.assets%5C%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC-1.png" alt="三层架构与MVC-1" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://gitee.com/cikorsky/blog-shijohn/raw/master/img/%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC/%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC-1.png" alt="三层架构与MVC-1" loading="lazy"></figure>
 <p>业务是核心，技术是辅助业务的。</p>
 <p>业务是有复杂度的，分三级：</p>
 <ul>
@@ -63,9 +63,9 @@
 <li>Model 处理后，将处理结果再交给 Controller</li>
 <li>Controller 在接到处理结果后，根据处理结果找到要作为向客户端发回的响应 View 页面。页面经渲染（数据填充）后，再发送给客户端。</li>
 </ul>
-<figure data-type="image" tabindex="2"><img src="E:%5C%E5%B7%A5%E4%BD%9C%E6%96%87%E6%A1%A3%5CNotes%5CJava%E7%AC%94%E8%AE%B0%5C%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC.assets%5C%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC-2.png" alt="三层架构与MVC-2" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://gitee.com/cikorsky/blog-shijohn/raw/master/img/%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC/%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC-2.png" alt="三层架构与MVC-2" loading="lazy"></figure>
 <h2 id="三层架构-mvc-示意图">三层架构 + MVC 示意图</h2>
-<figure data-type="image" tabindex="3"><img src="E:%5C%E5%B7%A5%E4%BD%9C%E6%96%87%E6%A1%A3%5CNotes%5CJava%E7%AC%94%E8%AE%B0%5C%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC.assets%5C%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC-3.png" alt="三层架构与MVC-3" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://gitee.com/cikorsky/blog-shijohn/raw/master/img/%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC/%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC-3.png" alt="三层架构与MVC-3" loading="lazy"></figure>
 <h1 id="小知识-高内聚低耦合">小知识-高内聚，低耦合</h1>
 <p>一种类只做一种事；</p>
 <p>一个方法只做一件事；</p>
@@ -75,12 +75,12 @@
 <p>TDD 测试驱动编程</p>
 <p>Q: IDEA的MAVEN工具栏不显示？</p>
 <p>A: 1. 首先view &gt;Tool Windows &gt; Maven，如果没有Maven项说明MAVEN环境没配置好；</p>
-<figure data-type="image" tabindex="4"><img src="E:%5C%E5%B7%A5%E4%BD%9C%E6%96%87%E6%A1%A3%5CNotes%5CJava%E7%AC%94%E8%AE%B0%5C%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC.assets%5C%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC-4.png" alt="1570881340310" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://gitee.com/cikorsky/blog-shijohn/raw/master/img/%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC/%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC-4.png" alt="三层架构与MVC-4" loading="lazy"></figure>
 <ol start="2">
 <li>打开File&gt;Settings（快捷键Ctrl+Shift+S）&gt;Build,Execution,Deployment&gt;Build Tools&gt;Maven，显式maven的环境，看是否为正确的配置。</li>
 <li>1和2调整后均需重启IDEA。</li>
 </ol>
-<figure data-type="image" tabindex="5"><img src="E:%5C%E5%B7%A5%E4%BD%9C%E6%96%87%E6%A1%A3%5CNotes%5CJava%E7%AC%94%E8%AE%B0%5C%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC.assets%5C%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC-5.png" alt="三层架构与MVC-5" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://gitee.com/cikorsky/blog-shijohn/raw/master/img/%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC/%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC-5.png" alt="三层架构与MVC-5" loading="lazy"></figure>
 ]]></content>
     </entry>
     <entry>
