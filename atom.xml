@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shijohn.github.io</id>
     <title>伊索烟雨</title>
-    <updated>2021-05-26T10:09:01.802Z</updated>
+    <updated>2021-05-26T10:14:18.454Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shijohn.github.io"/>
     <link rel="self" href="https://shijohn.github.io/atom.xml"/>
@@ -10,6 +10,23 @@
     <logo>https://shijohn.github.io/images/avatar.png</logo>
     <icon>https://shijohn.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 伊索烟雨</rights>
+    <entry>
+        <title type="html"><![CDATA[印象余杭]]></title>
+        <id>https://shijohn.github.io/yin-xiang-yu-hang/</id>
+        <link href="https://shijohn.github.io/yin-xiang-yu-hang/">
+        </link>
+        <updated>2021-05-26T10:10:32.000Z</updated>
+        <summary type="html"><![CDATA[<p>照片摄于2014年。<br>
+<img src="https://gitee.com/cikorsky/blog-shijohn/raw/master/img/%E5%8D%B0%E8%B1%A1%E4%BD%99%E6%9D%AD/%E5%8D%B0%E8%B1%A1%E4%BD%99%E6%9D%AD%20(4).jpg" alt="4" loading="lazy"></p>
+]]></summary>
+        <content type="html"><![CDATA[<p>照片摄于2014年。<br>
+<img src="https://gitee.com/cikorsky/blog-shijohn/raw/master/img/%E5%8D%B0%E8%B1%A1%E4%BD%99%E6%9D%AD/%E5%8D%B0%E8%B1%A1%E4%BD%99%E6%9D%AD%20(4).jpg" alt="4" loading="lazy"></p>
+<!-- more -->
+<p><img src="https://gitee.com/cikorsky/blog-shijohn/raw/master/img/%E5%8D%B0%E8%B1%A1%E4%BD%99%E6%9D%AD/%E5%8D%B0%E8%B1%A1%E4%BD%99%E6%9D%AD%20(1).jpg" alt="1" loading="lazy"><br>
+<img src="https://gitee.com/cikorsky/blog-shijohn/raw/master/img/%E5%8D%B0%E8%B1%A1%E4%BD%99%E6%9D%AD/%E5%8D%B0%E8%B1%A1%E4%BD%99%E6%9D%AD%20(2).jpg" alt="2" loading="lazy"><br>
+<img src="https://gitee.com/cikorsky/blog-shijohn/raw/master/img/%E5%8D%B0%E8%B1%A1%E4%BD%99%E6%9D%AD/%E5%8D%B0%E8%B1%A1%E4%BD%99%E6%9D%AD%20(3).jpg" alt="3" loading="lazy"></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[印象五台]]></title>
         <id>https://shijohn.github.io/yin-xiang-wu-tai/</id>
