@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shijohn.github.io</id>
     <title>伊索烟雨</title>
-    <updated>2021-05-21T02:14:29.532Z</updated>
+    <updated>2021-05-26T10:08:17.807Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shijohn.github.io"/>
     <link rel="self" href="https://shijohn.github.io/atom.xml"/>
@@ -10,6 +10,24 @@
     <logo>https://shijohn.github.io/images/avatar.png</logo>
     <icon>https://shijohn.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 伊索烟雨</rights>
+    <entry>
+        <title type="html"><![CDATA[印象五台]]></title>
+        <id>https://shijohn.github.io/yin-xiang-wu-tai/</id>
+        <link href="https://shijohn.github.io/yin-xiang-wu-tai/">
+        </link>
+        <updated>2021-05-26T09:59:41.000Z</updated>
+        <summary type="html"><![CDATA[<p>照片摄于2015年6月，6年回首，一段过往，一段时光。<br>
+<img src="https://gitee.com/cikorsky/blog-shijohn/raw/master/img/%E5%8D%B0%E8%B1%A1%E4%BA%94%E5%8F%B0/%E5%8D%B0%E8%B1%A1%E4%BA%94%E5%8F%B0%20(1).jpg" alt="印象五台1" loading="lazy"></p>
+]]></summary>
+        <content type="html"><![CDATA[<p>照片摄于2015年6月，6年回首，一段过往，一段时光。<br>
+<img src="https://gitee.com/cikorsky/blog-shijohn/raw/master/img/%E5%8D%B0%E8%B1%A1%E4%BA%94%E5%8F%B0/%E5%8D%B0%E8%B1%A1%E4%BA%94%E5%8F%B0%20(1).jpg" alt="印象五台1" loading="lazy"></p>
+<!-- more -->
+<p><img src="https://gitee.com/cikorsky/blog-shijohn/raw/master/img/%E5%8D%B0%E8%B1%A1%E4%BA%94%E5%8F%B0/%E5%8D%B0%E8%B1%A1%E4%BA%94%E5%8F%B0%20(3).jpg" alt="印象五台3" loading="lazy"><br>
+<img src="https://gitee.com/cikorsky/blog-shijohn/raw/master/img/%E5%8D%B0%E8%B1%A1%E4%BA%94%E5%8F%B0/%E5%8D%B0%E8%B1%A1%E4%BA%94%E5%8F%B0%20(4).jpg" alt="印象五台4" loading="lazy"><br>
+<img src="https://gitee.com/cikorsky/blog-shijohn/raw/master/img/%E5%8D%B0%E8%B1%A1%E4%BA%94%E5%8F%B0/%E5%8D%B0%E8%B1%A1%E4%BA%94%E5%8F%B0%20(5).jpg" alt="印象五台5" loading="lazy"><br>
+<img src="https://gitee.com/cikorsky/blog-shijohn/raw/master/img/%E5%8D%B0%E8%B1%A1%E4%BA%94%E5%8F%B0/%E5%8D%B0%E8%B1%A1%E4%BA%94%E5%8F%B0%20(6).jpg" alt="印象五台6" loading="lazy"></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[三层架构与MVC]]></title>
         <id>https://shijohn.github.io/san-ceng-jia-gou-yu-mvc/</id>
